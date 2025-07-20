@@ -1,4 +1,4 @@
-from flask import app
+from flask import current_app
 from src.app.ai_engine.core.factory import AIModelFactory
 from src.app.ai_engine.models.abstract_model import AbstractTextModel, AbstractImageModel
 
@@ -12,21 +12,21 @@ class AIEngine:
     def set_active_model(self, model_name: str):
         model_name = model_name.lower()
         if self._current_model_name != model_name:
-            app.logger.info(f"Active model : {model_name}")
+            current_app.logger.info(f"Active model : {model_name}")
             if model_name not in self.initialize_model:
                 try:
                     self.initialize_model[model_name] = self.factory.get_model(model_name)
                 except Exception as ex:
-                    app.logger.error(f"Error initializing model {model_name} : {ex}")
+                    current_app.logger.error(f"Error initializing model {model_name} : {ex}")
                     raise ValueError(f"Error initializing model {model_name} : {ex}")
             self._current_model = self.initialize_model[model_name]
             self._current_model_name = model_name
         else:
-            app.logger.info(f"Already active model : {model_name}")
+            current_app.logger.info(f"Already active model : {model_name}")
             
     def get_active_model(self):
         if self._current_model is None:
-            app.logger.error("No active model")
+            current_app.logger.error("No active model")
             raise ValueError("No active model")
         return self._current_model
     
@@ -37,7 +37,7 @@ class AIEngine:
         try:
             return model.generate_text(prompt, **kwargs)
         except Exception as ex:
-            app.logger.error(f"Error generating text for model {model_name} : {ex}")
+            current_app.logger.error(f"Error generating text for model {model_name} : {ex}")
             raise ValueError(f"Error generating text for model {model_name} : {ex}")
     
     def generate_image(self, prompt: str, model_name: str = None, **kwargs):

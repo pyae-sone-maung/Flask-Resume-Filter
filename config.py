@@ -5,7 +5,11 @@ load_dotenv()
 
 class Config:
     # Base configuration JWT, SECRE_KEY, etc 
-    pass
+    
+    # File Upload Settings
+    UPLOAD_FOLDER = os.path.join("src", "assets", "uploads")
+    ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'pdf', 'docx', 'xlsx'}
+    MAX_CONTENT_LENGTH = 5 * 1024 * 1024  # 16 MB limit for uploads
 
 class DevelopmentConfig(Config):
     DEBUG = True
