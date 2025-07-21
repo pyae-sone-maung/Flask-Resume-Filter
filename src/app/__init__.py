@@ -2,8 +2,8 @@ import logging
 from flask import Flask, jsonify
 from config import config_by_name
 
-from src.core.logging.logging_config import setup_logging
-from src.core.error_handling.handlers import register_error_handlers
+from src.app.core.logging.logging_config import setup_logging
+from src.app.core.error_handling.handlers import register_error_handlers
 
 from src.app.routes import register_blueprints
 

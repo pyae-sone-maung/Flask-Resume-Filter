@@ -1,5 +1,5 @@
 from flask import jsonify, request
-from src.core.error_handling.exception import APIError
+from src.app.core.error_handling.exception import APIError
 
 def register_error_handlers(app):
     @app.errorhandler(APIError)
