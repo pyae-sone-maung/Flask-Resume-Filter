@@ -7,7 +7,8 @@ class Config:
     # Base configuration JWT, SECRE_KEY, etc 
     
     # File Upload Settings
-    UPLOAD_FOLDER = os.path.join("src", "assets", "uploads")
+    basedir = os.path.abspath(os.path.dirname(__file__))
+    UPLOAD_FOLDER = os.path.join(basedir, 'src', 'assets', 'uploads')
     ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'pdf', 'docx', 'xlsx'}
     MAX_CONTENT_LENGTH = 5 * 1024 * 1024  # 16 MB limit for uploads
 

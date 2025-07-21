@@ -1,4 +1,5 @@
-RESUME_EXTRACTION_PROMPT = """You are an HR data analyst. Your task is to extract employee data from a resume into JSON format.
+RESUME_EXTRACTION_PROMPT = """You are an HR data analyst. Your task is to extract employee data from a resume. Your final output must be a single, raw JSON object. Do not include any extra text, explanations, or code blocks.
+
 **Crucially, if the original text is in Zawgyi font with incorrect spacing, you must convert it to correct Myanmar Unicode font and remove all unnecessary spaces to make it readable and accurate.
 ** Keep all data in its original language.
 Include:

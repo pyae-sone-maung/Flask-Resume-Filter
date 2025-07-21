@@ -14,9 +14,8 @@ from src.app.ai_engine.task import retrieve_resume_data
 
 class ResumeService:
     
-    def get_porcessed_resume_data(self):
+    def get_porcessed_resume_data(self, upload_file):
         extract_text = ""
-        upload_file = os.path.join(current_app.config['UPLOAD_FOLDER'], "AKK.pdf")
         ext = file_service_util.get_file_extension(upload_file)
         
         try:

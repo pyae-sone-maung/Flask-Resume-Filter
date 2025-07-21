@@ -33,7 +33,7 @@ class AIEngine:
     def generate_text(self, prompt, model_name, **kwargs):
         if model_name:
             self.set_active_model(model_name)
-        model = self._get_active_model()
+        model = self.get_active_model()
         try:
             return model.generate_text(prompt, **kwargs)
         except Exception as ex:
@@ -43,7 +43,7 @@ class AIEngine:
     def generate_image(self, prompt: str, model_name: str = None, **kwargs):
         if model_name:
             self.set_active_model(model_name)
-        model = self._get_active_model()
+        model = self.get_active_model()
         return model.generate_image(prompt, **kwargs)
 
     @staticmethod

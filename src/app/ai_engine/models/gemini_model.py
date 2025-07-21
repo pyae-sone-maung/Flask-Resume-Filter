@@ -27,6 +27,7 @@ class GeminiModel(AbstractTextModel):
         if response.candidates:
             first_candidate = response.candidates[0]
             if first_candidate.content and first_candidate.content.parts:
-                response_text = first_candidate.content.parts[0].text
+                json_text = first_candidate.content.parts[0].text
+                response_text = json_text.strip('```json\n').strip('```').strip()
         return response_text
 

@@ -17,7 +17,7 @@ class ApiResponse:
         return {key: value for key, value in response.items() if value is not None}
         
 def success_response(message, data):
-    return ApiResponse(status="success", message=message, data=data)
+    return ApiResponse(status="success", message=message, data=data, error="")
 
 def fail_response(message, error):
-    return ApiResponse(status="error", message=message, error=error)
+    return ApiResponse(status="fail", message=message, data={}, error=error)
